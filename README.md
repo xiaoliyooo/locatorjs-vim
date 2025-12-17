@@ -75,6 +75,10 @@ chmod +x install_host.sh
 4. 确保 Node.js 和 nvm 已安装
 5. 查看调试日志：`cat ~/locator_vim_debug.log`
 
+## 📋 TODO
+
+- [ ] 支持只添加到剪切板设置项
+
 ## 📄 License
 
 MIT

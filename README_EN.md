@@ -75,6 +75,10 @@ Return to `chrome://extensions` and click the refresh button for the extension.
 4. Ensure Node.js and nvm are installed
 5. Check debug log: `cat ~/locator_vim_debug.log`
 
+## 📋 TODO
+
+- [ ] Support "copy to clipboard only" setting
+
 ## 📄 License
 
 MIT
