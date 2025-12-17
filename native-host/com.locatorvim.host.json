@@ -1,0 +1,8 @@
+{
+  "name": "com.locatorvim.host",
+  "description": "Locator Vim Native Messaging Host",
+  "path": "",
+  "type": "stdio",
+  "allowed_origins": ["chrome-extension://EXTENSION_ID_PLACEHOLDER/"]
+}
+

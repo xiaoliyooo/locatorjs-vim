@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Locator Vim</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          "Helvetica Neue", sans-serif;
+        width: 320px;
+        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+        color: #e2e8f0;
+      }
+
+      .container {
+        padding: 20px;
+      }
+
+      .header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 20px;
+      }
+
+      .title {
+        font-size: 18px;
+        font-weight: 600;
+        color: #f1f5f9;
+      }
+
+      .subtitle {
+        font-size: 12px;
+        color: #94a3b8;
+      }
+
+      .toggle-section {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 12px;
+        padding: 16px;
+        margin-bottom: 16px;
+      }
+
+      .toggle-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .toggle-label {
+        font-size: 14px;
+        font-weight: 500;
+      }
+
+      .toggle {
+        position: relative;
+        width: 48px;
+        height: 26px;
+      }
+
+      .toggle input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+
+      .toggle-slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #4a5568;
+        border-radius: 26px;
+        transition: 0.3s;
+      }
+
+      .toggle-slider:before {
+        position: absolute;
+        content: "";
+        height: 20px;
+        width: 20px;
+        left: 3px;
+        bottom: 3px;
+        background-color: white;
+        border-radius: 50%;
+        transition: 0.3s;
+      }
+
+      input:checked + .toggle-slider {
+        background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+      }
+
+      input:checked + .toggle-slider:before {
+        transform: translateX(22px);
+      }
+
+      .status {
+        margin-top: 10px;
+        font-size: 12px;
+        color: #94a3b8;
+      }
+
+      .status.active {
+        color: #10b981;
+      }
+
+      .instructions {
+        background: rgba(16, 185, 129, 0.1);
+        border: 1px solid rgba(16, 185, 129, 0.2);
+        border-radius: 12px;
+        padding: 16px;
+        margin-bottom: 16px;
+      }
+
+      .instructions h3 {
+        font-size: 13px;
+        font-weight: 600;
+        color: #10b981;
+        margin-bottom: 10px;
+      }
+
+      .instructions ul {
+        list-style: none;
+        font-size: 12px;
+        color: #94a3b8;
+      }
+
+      .instructions li {
+        margin-bottom: 8px;
+        padding-left: 16px;
+        position: relative;
+      }
+
+      .instructions li:before {
+        content: "→";
+        position: absolute;
+        left: 0;
+        color: #10b981;
+      }
+
+      .kbd {
+        display: inline-block;
+        padding: 2px 6px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 4px;
+        font-family: "SF Mono", Monaco, monospace;
+        font-size: 11px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .footer {
+        text-align: center;
+        padding-top: 12px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .footer a {
+        color: #10b981;
+        text-decoration: none;
+        font-size: 12px;
+      }
+
+      .footer a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <img src="icons/icon48.png" alt="icon" />
+        <div>
+          <div class="title">Locator Vim</div>
+          <div class="subtitle">Open components in Vim/Neovim</div>
+        </div>
+      </div>
+
+      <div class="toggle-section">
+        <div class="toggle-row">
+          <span class="toggle-label">Enable Locator</span>
+          <label class="toggle">
+            <input type="checkbox" id="enableToggle" />
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+        <div class="status" id="status">Disabled</div>
+      </div>
+
+      <div class="instructions">
+        <h3>How to use</h3>
+        <ul>
+          <li>Hold <span class="kbd">Alt</span> and hover over components</li>
+          <li>
+            <span class="kbd">Alt</span> + <span class="kbd">Click</span> to
+            open in Neovim
+          </li>
+          <li>Press <span class="kbd">Esc</span> to disable</li>
+        </ul>
+      </div>
+
+      <div class="footer">
+        <a href="options.html" target="_blank">⚙️ Settings</a>
+      </div>
+    </div>
+
+    <script src="popup.js"></script>
+  </body>
+</html>

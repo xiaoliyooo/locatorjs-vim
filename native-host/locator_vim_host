@@ -1,0 +1,14 @@
+#!/bin/bash
+
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+JS_SCRIPT="$SCRIPT_DIR/locator_vim_host.js"
+
+# Load nvm (required for Chrome which doesn't load shell profiles)
+[ -s "$HOME/.nvm/nvm.sh" ] && . "$HOME/.nvm/nvm.sh"
+
+if command -v node &>/dev/null; then
+    exec "$(command -v node)" "$JS_SCRIPT"
+else
+    echo '{"success": false, "error": "Node.js not found"}' >&2
+    exit 1
+fi
